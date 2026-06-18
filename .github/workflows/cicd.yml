@@ -55,5 +55,9 @@ jobs:
       - name: Image digest
         run: echo ${{steps.build-and-publish.outputs.digest}}
 
+      - name: Trigger Render Deployment
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+
         
 
